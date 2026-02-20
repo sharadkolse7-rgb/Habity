@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Karma Currency — Habit Tracker</title>
+    <meta name="description" content="Track habits, earn coins, spend on rewards.">
+    <meta name="theme-color" content="#0a0a1a">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪙</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <!-- Coin Animation Layer -->
+    <div id="coin-animation-layer"></div>
+
+    <!-- App Shell -->
+    <div class="app-shell">
+
+        <!-- Header / Wallet -->
+        <header class="wallet" id="wallet">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <i class="fa-solid fa-sun"></i>
+            </button>
+            <div class="wallet-label"><i class="fa-solid fa-wallet"></i> Total Balance</div>
+            <div class="wallet-balance" id="balance-display">0</div>
+            <div class="wallet-subtitle">Karma Coins</div>
+        </header>
+
+        <!-- Tab Bar -->
+        <nav class="tab-bar">
+            <button class="tab active" data-tab="habits"><i class="fa-solid fa-bolt"></i><span>Habits</span></button>
+            <button class="tab" data-tab="calendar"><i
+                    class="fa-solid fa-calendar-days"></i><span>Calendar</span></button>
+            <button class="tab" data-tab="tips"><i class="fa-solid fa-lightbulb"></i><span>Tips</span></button>
+            <button class="tab" data-tab="shop"><i class="fa-solid fa-store"></i><span>Shop</span></button>
+            <button class="tab" data-tab="manage"><i class="fa-solid fa-sliders"></i><span>Manage</span></button>
+            <button class="tab" data-tab="history"><i
+                    class="fa-solid fa-clock-rotate-left"></i><span>History</span></button>
+        </nav>
+
+        <!-- Content Area -->
+        <main class="content">
+
+            <!-- Habits Tab -->
+            <section class="tab-content active" id="tab-habits">
+                <div class="section-title"><i class="fa-solid fa-face-smile"></i> Good Habits</div>
+                <div id="good-habits-list" class="habits-grid"></div>
+                <div class="section-title bad"><i class="fa-solid fa-face-frown"></i> Bad Habits</div>
+                <div id="bad-habits-list" class="habits-grid"></div>
+                <div class="section-title neutral"><i class="fa-solid fa-face-meh"></i> Neutral Habits</div>
+                <div id="neutral-habits-list" class="habits-grid"></div>
+            </section>
+
+            <!-- Calendar Tab -->
+            <section class="tab-content" id="tab-calendar"></section>
+
+            <!-- Tips Tab -->
+            <section class="tab-content" id="tab-tips"></section>
+
+            <!-- Reward Shop Tab -->
+            <section class="tab-content" id="tab-shop">
+                <div class="section-title shop"><i class="fa-solid fa-bag-shopping"></i> Reward Shop</div>
+                <div id="rewards-list" class="habits-grid"></div>
+                <button class="btn-add-reward glass-card" id="btn-add-reward"><i class="fa-solid fa-plus"></i> Add
+                    Reward</button>
+            </section>
+
+            <!-- Manage Habits Tab -->
+            <section class="tab-content" id="tab-manage">
+                <div class="section-title manage"><i class="fa-solid fa-pen-to-square"></i> Manage Habits</div>
+                <div id="manage-list" class="manage-grid"></div>
+                <button class="btn-add-reward glass-card" id="btn-add-habit"><i class="fa-solid fa-plus"></i> Add
+                    Habit</button>
+                <button class="btn-add-reward glass-card" id="btn-load-profile"
+                    style="border-color:rgba(255,215,64,.3);color:var(--gold)"><i class="fa-solid fa-user-tag"></i> Load
+                    Profile Preset</button>
+            </section>
+
+            <!-- History Tab -->
+            <section class="tab-content" id="tab-history">
+                <div class="section-title history"><i class="fa-solid fa-scroll"></i> Transaction History</div>
+                <div id="history-list" class="history-grid"></div>
+                <button class="btn-clear-history glass-card" id="btn-clear-history"><i class="fa-solid fa-trash"></i>
+                    Clear History</button>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- FAB Quick Add -->
+    <button class="fab" id="fab-quick"><i class="fa-solid fa-plus"></i></button>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal glass-card" id="modal">
+            <div class="modal-header">
+                <h3 id="modal-title">Add Habit</h3>
+                <button class="modal-close" id="modal-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');</script>
+</body>
+
+</html>
