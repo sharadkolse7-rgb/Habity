@@ -182,6 +182,7 @@
   ];
 
   // --- State ---
+  let isFirstRun = false;
   let state = loadState();
   let isFirstRun = false;
 
